@@ -31,15 +31,6 @@ public class SDNetwork {
         
     }
     
-    
-    class func showNoResponse(vw: UIViewController){
-        let responseView = UINib(nibName: "NoResponse", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NoResponse
-        responseView.fromAppDelegate = false
-        responseView.frame = UIScreen.main.bounds
-        let response = SDViewController()
-        response.view.addSubview(responseView)
-        vw.present(response, animated: false, completion: nil)
-    }
 }
 
 public class SDCall {
@@ -346,16 +337,6 @@ class SDAlert {
 }
 
 class SDString{
-    class func changeNumWithSemicolon(num: String) -> String{
-        let formatTest = Int(num)?.format(Decimals.three)
-        let retStr: String = "\(formatTest!)".replacingOccurrences(of: ".000", with: "")
-        return retStr
-    }
-    
-    class func replacePresianSearchWithText(text: String!) -> String!{
-        let str : String! = (text.replacingOccurrences(of: "ي", with: "ی")).replacingOccurrences(of: "گ", with: "گ")
-        return str
-    }
     
     class func replaceImageName(text: String) -> String{
         if SDUserDefault.getStringValue(forKey: "SDUserDefault_ColorApp") == "white"{
@@ -382,17 +363,17 @@ class SDString{
 
 class SDFont{
     class func returnFont(size: CGFloat) -> UIFont? {
-        return UIFont(name: "IRANSans(FaNum)", size: size)
+        return UIFont(name: "sample", size: size)
     }
     
     class func returnFontName(point: Int, size: CGFloat) -> UIFont? {
         
-        var fonts: [String] = ["IRANSansMobileFaNum-Medium", //0
-            "IRANSansMobileFaNum-Bold", //1
-            "IRANSansMobileFaNum-Black", //2
-            "IRANSansMobileFaNum", //3
-            "IRANSansMobileFaNum-UltraLight", //4
-            "IRANSansMobileFaNum-Light"]  //5
+        var fonts: [String] = ["sample-Medium", //0
+            "sample-Bold", //1
+            "sample-Black", //2
+            "sample", //3
+            "sample-UltraLight", //4
+            "sample-Light"]  //5
         return UIFont(name: fonts[point], size: size)
     }
 }
