@@ -2,11 +2,7 @@
 import UIKit
 import SystemConfiguration
 
-import Format
-import RealmSwift
-
 import Reflection
-
 
 public class SDNetwork {
     
@@ -44,31 +40,6 @@ public class SDNetwork {
         response.view.addSubview(responseView)
         vw.present(response, animated: false, completion: nil)
     }
-}
-
-
-public class SDRealm {
-    
-    class func write(obj: Object) -> Void{
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(obj)
-        }
-    }
-    
-    class func get(obj: Object.Type, queryString: String) -> [Object]{
-        let realm = try! Realm()
-        let returnObjs = realm.objects(obj).filter(queryString)
-        return returnObjs.map{$0}
-    }
-    
-    class func delete(obj: Object) -> Void{
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(obj)
-        }
-    }
-    
 }
 
 public class SDCall {
@@ -302,55 +273,6 @@ public class SDLayout {
     
 }
 
-
-class SDPersianEnglish {
-    class func changeMobileNumberToEnglish(text: String) -> String{
-        let NumberStr: String = text
-        let Formatter = NumberFormatter()
-        Formatter.locale = NSLocale(localeIdentifier: "EN") as Locale!
-        let mobile = Formatter.number(from: NumberStr)
-        if mobile != 0 {
-            return "0\(mobile!)"
-        }
-        return text
-    }
-    
-    class func changeMobileNumberToEnglishCode(text: String) -> String{
-        let NumberStr: String = text
-        let Formatter = NumberFormatter()
-        Formatter.locale = NSLocale(localeIdentifier: "EN") as Locale!
-        let mobile = Formatter.number(from: NumberStr)
-        let mobileStr: String = "\(mobile!)"
-        if mobileStr.count == 3{
-            return "0\(mobile!)"
-        }else if mobileStr.count == 2{
-            return "00\(mobile!)"
-        }else if mobileStr.count == 1{
-            return "000\(mobile!)"
-        }
-        if mobile != 0 {
-            return "\(mobile!)"
-        }
-        return text
-    }
-    
-    class func changePersianNumToEnglish(text: String) -> String{
-        let NumberStr: String = text
-        let Formatter = NumberFormatter()
-        Formatter.locale = NSLocale(localeIdentifier: "EN") as Locale!
-        let mobile = Formatter.number(from: NumberStr)
-        if mobile != 0 {
-            return "\(mobile!)"
-        }
-        return text
-    }
-    
-    
-    
-    
-}
-
-
 class SDUserDefault {
     class func setStringValue(value: String, forKey: String) {
         UserDefaults.standard.set(value, forKey: forKey)
@@ -380,56 +302,21 @@ class SDUserDefault {
 
 class SDTime {
     class func returnDateFromMilisecond(_ myDate : String!) -> String{
-        
-        //        let milisecond = Int(myDate);
-        //        let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(milisecond!)/1000);
-        //        let dateFormatter = DateFormatter();
-        //        dateFormatter.dateFormat = "dd-mm-yyyy";
-        //        let calendar = Calendar(identifier: .persian)
-        //        let components = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: dateVar)
-        //        return "\(components.year!)/\(components.month!)/\(components.day!)"
-        
-        
-        //        let unixTimestamp = 1480134638.0
+
         let date = Date(timeIntervalSince1970: TimeInterval(Int(myDate)!))
-        
-        
-        //        let date = Date(timeIntervalSince1970: unixtimeInterval)
-        //        let dateFormatter = DateFormatter()
-        //        dateFormatter.timeZone = TimeZone(abbreviation: "fa_IR") //Set timezone that you want
-        //        dateFormatter.locale = NSLocale.init(localeIdentifier: "ir") as Locale!
-        //        dateFormatter.dateFormat = "yyyy-MM-dd" //Specify your format that you want
-        
+
         let calendar = Calendar(identifier: .persian)
         let components = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: date)
-        //        let strDate = dateFormatter.string(from: date)
+        
         return "\(components.year!)/\(components.month!)/\(components.day!)"
     }
     
     class func returnDateFromTimeInterval(_ myDate : TimeInterval!) -> String{
-        
-        //        let milisecond = Int(myDate);
-        //        let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(milisecond!)/1000);
-        //        let dateFormatter = DateFormatter();
-        //        dateFormatter.dateFormat = "dd-mm-yyyy";
-        //        let calendar = Calendar(identifier: .persian)
-        //        let components = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: dateVar)
-        //        return "\(components.year!)/\(components.month!)/\(components.day!)"
-        
-        
-        //        let unixTimestamp = 1480134638.0
+
         let date = Date(timeIntervalSince1970: myDate)
-        
-        
-        //        let date = Date(timeIntervalSince1970: unixtimeInterval)
-        //        let dateFormatter = DateFormatter()
-        //        dateFormatter.timeZone = TimeZone(abbreviation: "fa_IR") //Set timezone that you want
-        //        dateFormatter.locale = NSLocale.init(localeIdentifier: "ir") as Locale!
-        //        dateFormatter.dateFormat = "yyyy-MM-dd" //Specify your format that you want
-        
         let calendar = Calendar(identifier: .persian)
         let components = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: date)
-        //        let strDate = dateFormatter.string(from: date)
+        
         return "\(components.year!)/\(components.month!)/\(components.day!)"
     }
 }
