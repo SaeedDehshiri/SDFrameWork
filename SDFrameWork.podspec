@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'SDFrameWork'
-  s.version = '1.0.1'
+  s.version = '1.0.2'
   s.swift_version = '4.0'
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.summary = 'Easy for create layout without storyboard.'
