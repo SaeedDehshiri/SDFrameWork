@@ -233,12 +233,14 @@ public class SDLayout {
     
     public class func createTabelView(vc: UIViewController, tableView: UITableView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UITableView{
         
+        
+        
         if vc is UITableViewDelegate{
-            tableView.delegate = vc as! UITableViewDelegate
+            tableView.delegate = vc as? UITableViewDelegate
         }
         
         if vc is UITableViewDataSource{
-            tableView.dataSource = vc as! UITableViewDataSource
+            tableView.dataSource = vc as? UITableViewDataSource
         }
 
         tableView.frame = CGRect(x: x, y: y, width: w, height: h)
