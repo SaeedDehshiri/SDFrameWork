@@ -6,7 +6,7 @@ import Reflection
 
 public class SDNetwork {
     
-    class func checkNetwork() -> Bool{
+    public class func checkNetwork() -> Bool{
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
@@ -34,7 +34,7 @@ public class SDNetwork {
 }
 
 public class SDCall {
-    class func callNumber(phoneNumber:String) {
+    public class func callNumber(phoneNumber:String) {
         if let phoneCallURL:NSURL = NSURL(string:"tel://\(phoneNumber)") {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL as URL)) {
@@ -45,21 +45,21 @@ public class SDCall {
 }
 
 public class SDLayout {
-    class func createBgTransparent(uiImage: UIImageView, named: String) -> UIImageView{
+    public class func createBgTransparent(uiImage: UIImageView, named: String) -> UIImageView{
         uiImage.frame = UIScreen.main.bounds
         uiImage.image = UIImage(named: named)
         uiImage.contentMode = .scaleAspectFill
         return uiImage
     }
     
-    class func createImageWithOriginAndSize(uiImage: UIImageView, image_name: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIImageView{
+    public class func createImageWithOriginAndSize(uiImage: UIImageView, image_name: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIImageView{
         uiImage.image = UIImage(named: image_name)
         uiImage.contentMode = .scaleToFill
         uiImage.frame = CGRect(x: x, y: y, width: w, height: h)
         return uiImage
     }
     
-    class func createImageViewWithOriginAndSizeAndBorder(uiImage: UIImageView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIImageView{
+    public class func createImageViewWithOriginAndSizeAndBorder(uiImage: UIImageView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIImageView{
         uiImage.frame = CGRect(x: x, y: y, width: w, height: h)
         uiImage.layer.borderColor = UIColor(hex: "d2ab67", alpha: 1).cgColor
         uiImage.layer.borderWidth = 0.3
@@ -69,7 +69,7 @@ public class SDLayout {
         return uiImage
     }
     
-    class func createBtn(uiBtn: UIButton, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, backColor: UIColor) -> UIButton{
+    public class func createBtn(uiBtn: UIButton, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, backColor: UIColor) -> UIButton{
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = backColor
         uiBtn.layer.cornerRadius = 5
@@ -80,7 +80,7 @@ public class SDLayout {
     }
     
     
-    class func createBtn(uiBtn: UIButton, btnTitle: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, hex: UIColor) -> UIButton{
+    public class func createBtn(uiBtn: UIButton, btnTitle: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, hex: UIColor) -> UIButton{
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = UIColor.clear
         uiBtn.setTitle(btnTitle, for: .normal)
@@ -90,14 +90,14 @@ public class SDLayout {
         return uiBtn
     }
     
-    class func createBtnWithImage(uiBtn: UIButton, image: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIButton{
+    public class func createBtnWithImage(uiBtn: UIButton, image: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIButton{
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = UIColor.clear
         uiBtn.setBackgroundImage(UIImage(named: image), for: .normal)
         return uiBtn
     }
     
-    class func createBtnWithImageAndBorder(uiBtn: UIButton, image: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIButton{
+    public class func createBtnWithImageAndBorder(uiBtn: UIButton, image: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UIButton{
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = UIColor.clear
         uiBtn.setImage(UIImage(named: image), for: .normal)
@@ -109,7 +109,7 @@ public class SDLayout {
         return uiBtn
     }
     
-    class func createBtnWithImageWithCustomBorder(uiBtn: UIButton, image: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, cornerRadiusSize: CGFloat, borderWidthSize: CGFloat) -> UIButton{
+    public class func createBtnWithImageWithCustomBorder(uiBtn: UIButton, image: String, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, cornerRadiusSize: CGFloat, borderWidthSize: CGFloat) -> UIButton{
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = UIColor.clear
         uiBtn.setImage(UIImage(named: image), for: .normal)
@@ -121,7 +121,7 @@ public class SDLayout {
         return uiBtn
     }
     
-    class func createBtnWithCustomBorder(uiBtn: UIButton, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, cornerRadiusSize: CGFloat, borderWidthSize: CGFloat) -> UIButton{
+    public class func createBtnWithCustomBorder(uiBtn: UIButton, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, cornerRadiusSize: CGFloat, borderWidthSize: CGFloat) -> UIButton{
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = UIColor.clear
         //        uiBtn.setImage(UIImage(named: image), for: .normal)
@@ -133,7 +133,7 @@ public class SDLayout {
         return uiBtn
     }
     
-    class func createLabel(uiLabel: UILabel, hex: UIColor, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, txt: String) -> UILabel{
+    public class func createLabel(uiLabel: UILabel, hex: UIColor, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, txt: String) -> UILabel{
         uiLabel.frame = CGRect(x: x, y: y, width: w, height: h)
         uiLabel.font = SDFont.returnFont(size: 12)
         uiLabel.clipsToBounds = true
@@ -144,7 +144,7 @@ public class SDLayout {
         return uiLabel
     }
     
-    class func createLabelWithSize(uiLabel: UILabel, hex: UIColor, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, txt: String, size: CGFloat) -> UILabel{
+    public class func createLabelWithSize(uiLabel: UILabel, hex: UIColor, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, txt: String, size: CGFloat) -> UILabel{
         uiLabel.frame = CGRect(x: x, y: y, width: w, height: h)
         uiLabel.font = SDFont.returnFont(size: size)
         uiLabel.clipsToBounds = true
@@ -155,7 +155,7 @@ public class SDLayout {
         return uiLabel
     }
     
-    class func createTextField(uiTextField: UITextField, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, borderHex: UIColor, bgColor: UIColor, placeHolder: String) -> UITextField{
+    public class func createTextField(uiTextField: UITextField, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, borderHex: UIColor, bgColor: UIColor, placeHolder: String) -> UITextField{
         uiTextField.frame = CGRect(x: x, y: y, width: w, height: h)
         uiTextField.layer.cornerRadius = 20
         uiTextField.layer.masksToBounds = true
@@ -171,7 +171,7 @@ public class SDLayout {
         return uiTextField
     }
     
-    class func createTextFieldWithKeyboardType(uiTextField: UITextField, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, borderHex: UIColor, bgColor: UIColor, placeHolder: String, keyboard: UIKeyboardType, cornerRadius: CGFloat) -> UITextField{
+    public class func createTextFieldWithKeyboardType(uiTextField: UITextField, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, borderHex: UIColor, bgColor: UIColor, placeHolder: String, keyboard: UIKeyboardType, cornerRadius: CGFloat) -> UITextField{
         uiTextField.frame = CGRect(x: x, y: y, width: w, height: h)
         uiTextField.layer.cornerRadius = cornerRadius
         uiTextField.layer.masksToBounds = true
@@ -187,7 +187,7 @@ public class SDLayout {
         return uiTextField
     }
     
-    class func createTextViewWithKeyboardType(uiTextView: UITextView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, borderHex: String, bgColor: String, keyboard: UIKeyboardType, cornerRadius: CGFloat) -> UITextView{
+    public class func createTextViewWithKeyboardType(uiTextView: UITextView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, borderHex: String, bgColor: String, keyboard: UIKeyboardType, cornerRadius: CGFloat) -> UITextView{
         uiTextView.frame = CGRect(x: x, y: y, width: w, height: h)
         uiTextView.layer.cornerRadius = cornerRadius
         uiTextView.layer.masksToBounds = true
@@ -202,7 +202,7 @@ public class SDLayout {
         return uiTextView
     }
     
-    class func createTextViewForShow(uiTextView: UITextView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, cornerRadius: CGFloat, txt: String) -> UITextView{
+    public class func createTextViewForShow(uiTextView: UITextView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, cornerRadius: CGFloat, txt: String) -> UITextView{
         uiTextView.frame = CGRect(x: x, y: y, width: w, height: h)
         uiTextView.layer.cornerRadius = cornerRadius
         //        uiTextView.layer.masksToBounds = true
@@ -219,7 +219,7 @@ public class SDLayout {
     }
     
     
-    class func createSelectedUIView(view: UIView, x: CGFloat, y: CGFloat) -> UIView{
+    public class func createSelectedUIView(view: UIView, x: CGFloat, y: CGFloat) -> UIView{
         view.frame = CGRect(x: x, y: y, width: 20.0, height: 20.0)
         view.layer.cornerRadius = 10
         view.backgroundColor = UIColor.init(hex: "d2ab67")
@@ -227,7 +227,7 @@ public class SDLayout {
         return view
     }
     
-    class func createUnSelectedUIView(view: UIView, x: CGFloat, y: CGFloat) -> UIView{
+    public class func createUnSelectedUIView(view: UIView, x: CGFloat, y: CGFloat) -> UIView{
         view.frame = CGRect(x: x, y: y, width: 20.0, height: 20.0)
         view.layer.borderColor = UIColor(hex: "d2ab67", alpha: 1).cgColor
         view.layer.borderWidth = 0.3
@@ -237,14 +237,14 @@ public class SDLayout {
         return view
     }
     
-    class func createTabelView(vc: UIViewController, tableView: UITableView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UITableView{
+    public class func createTabelView(vc: UIViewController, tableView: UITableView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UITableView{
         tableView.delegate = vc as! UITableViewDelegate
         tableView.dataSource = vc as! UITableViewDataSource
         tableView.frame = CGRect(x: x, y: y, width: w, height: h)
         return tableView
     }
     
-    class func createTableViewCell(cell: UITableViewCell, newView: UIView, subViews: [UIView], constants: [CGFloat]) -> UITableViewCell{
+    public class func createTableViewCell(cell: UITableViewCell, newView: UIView, subViews: [UIView], constants: [CGFloat]) -> UITableViewCell{
         cell.contentView.addSubview(newView)
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.topAnchor.constraint(equalTo: newView.topAnchor, constant: constants[0]).isActive = true
@@ -264,35 +264,35 @@ public class SDLayout {
     
 }
 
-class SDUserDefault {
-    class func setStringValue(value: String, forKey: String) {
+public class SDUserDefault {
+    public class func setStringValue(value: String, forKey: String) {
         UserDefaults.standard.set(value, forKey: forKey)
     }
     
-    class func getStringValue(forKey: String) -> String? {
+    public class func getStringValue(forKey: String) -> String? {
         return UserDefaults.standard.object(forKey: forKey) as? String
     }
     
-    class func setIntValue(value: Int, forKey: String) {
+    public class func setIntValue(value: Int, forKey: String) {
         UserDefaults.standard.setValue(value, forKey: forKey)
     }
     
-    class func getIntValue(forKey: String) -> Int? {
+    public class func getIntValue(forKey: String) -> Int? {
         return UserDefaults.standard.object(forKey: forKey) as? Int
     }
     
-    class func setBoolValue(bool: Bool, forKey: String) {
+    public class func setBoolValue(bool: Bool, forKey: String) {
         UserDefaults.standard.set(bool, forKey: forKey)
     }
     
-    class func getBoolValue(forKey: String) -> Bool {
+    public class func getBoolValue(forKey: String) -> Bool {
         return UserDefaults.standard.bool(forKey: forKey)
     }
 }
 
 
-class SDTime {
-    class func returnDateFromMilisecond(_ myDate : String!) -> String{
+public class SDTime {
+    public class func returnDateFromMilisecond(_ myDate : String!) -> String{
 
         let date = Date(timeIntervalSince1970: TimeInterval(Int(myDate)!))
 
@@ -302,7 +302,7 @@ class SDTime {
         return "\(components.year!)/\(components.month!)/\(components.day!)"
     }
     
-    class func returnDateFromTimeInterval(_ myDate : TimeInterval!) -> String{
+    public class func returnDateFromTimeInterval(_ myDate : TimeInterval!) -> String{
 
         let date = Date(timeIntervalSince1970: myDate)
         let calendar = Calendar(identifier: .persian)
@@ -313,8 +313,8 @@ class SDTime {
 }
 
 
-class SDAlert {
-    class func createAlertViewMessageAndVCAndTitleDismiss(vc: UIViewController, title: String, message: String, dismissBtnTxt: String){
+public class SDAlert {
+    public class func createAlertViewMessageAndVCAndTitleDismiss(vc: UIViewController, title: String, message: String, dismissBtnTxt: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: dismissBtnTxt, style: .default, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: nil)
@@ -322,7 +322,7 @@ class SDAlert {
         vc.present(alert, animated: true, completion: nil)
     }
     
-    class func watingViewWithAlert(vc: UIViewController, title: String, message: String, dismissBtnTxt: String) -> UIAlertController {
+    public class func watingViewWithAlert(vc: UIViewController, title: String, message: String, dismissBtnTxt: String) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         
@@ -336,9 +336,9 @@ class SDAlert {
     }
 }
 
-class SDString{
+public class SDString{
     
-    class func replaceImageName(text: String) -> String{
+    public class func replaceImageName(text: String) -> String{
         if SDUserDefault.getStringValue(forKey: "SDUserDefault_ColorApp") == "white"{
             return "\(text)-black"
         }else{
@@ -346,14 +346,14 @@ class SDString{
         }
     }
     
-    class func height(withConstrainedWidth width: CGFloat, font: UIFont, txt: String) -> CGFloat {
+    public class func height(withConstrainedWidth width: CGFloat, font: UIFont, txt: String) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = txt.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
         
         return ceil(boundingBox.height)
     }
     
-    class func width(withConstrainedHeight height: CGFloat, font: UIFont, txt: String) -> CGFloat {
+    public class func width(withConstrainedHeight height: CGFloat, font: UIFont, txt: String) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
         let boundingBox = txt.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
         
@@ -361,12 +361,12 @@ class SDString{
     }
 }
 
-class SDFont{
-    class func returnFont(size: CGFloat) -> UIFont? {
+public class SDFont{
+    public class func returnFont(size: CGFloat) -> UIFont? {
         return UIFont(name: "sample", size: size)
     }
     
-    class func returnFontName(point: Int, size: CGFloat) -> UIFont? {
+    public class func returnFontName(point: Int, size: CGFloat) -> UIFont? {
         
         var fonts: [String] = ["sample-Medium", //0
             "sample-Bold", //1
@@ -381,7 +381,7 @@ class SDFont{
 
 
 extension UIColor{
-    convenience init(hex: String, alpha: CGFloat = -1){
+    public convenience init(hex: String, alpha: CGFloat = -1){
         let hexSt = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
         Scanner(string: hexSt).scanHexInt32(&int)
@@ -405,55 +405,11 @@ extension UIColor{
 }
 
 enum RCColorName {
-    case mainColor
-    case btnTitleColor
-    case btnBorderColor
-    case labelColor
-    case textFieldbgColor
-    case textFieldborderColor
-    case codebgTextField
-    case codePlaceHolderTextField
-    case showTextView
-    case borderShowTextView
-    case greenBalanceLabel
-    case seprateColor
-    case backBtnColor
-    case loginBtnColor
-    case labelBtnColor
-    case seprate2Color
-    case loginRefreshCodeBg
-    case statusBarBgColor
-    case discountBack
-    case offerDitails
-    case offerTimeDitails
-    case baseAppColor
-    case upView
+
 }
 
 struct RCColors {
-    let mainColor: Int = 0x000000
-    let btnTitleColor: Int = 0x000000
-    let btnBorderColor: Int = 0x000000
-    let labelColor: Int = 0x000000
-    let textFieldbgColor: Int = 0xffffff
-    let textFieldborderColor: Int = 0x000000
-    let codebgTextField: Int = 0xE5C0C0
-    let codePlaceHolderTextField: Int = 0x860000
-    let showTextView: Int = 0x000000
-    let borderShowTextView: Int = 0x000000
-    let greenBalanceLabel: Int = 0x417505
-    let seprateColor: Int = 0xF5F4F2
-    let backBtnColor: Int = 0x545250
-    let loginBtnColor: Int = 0xF8A63B
-    let labelBtnColor: Int = 0xffffff
-    let seprate2Color: Int = 0x4A4A4A
-    let loginRefreshCodeBg: Int = 0xFFF2E0
-    let statusBarBgColor: Int = 0xF8A63B
-    let discountBack: Int = 0xEC6161
-    let offerDitails: Int = 0xEC6161
-    let offerTimeDitails: Int = 0x4F2020
-    let baseAppColor: Int = 0xF8A63B
-    let upView: Int = 0x545250
+
 }
 
 @objc class Color: NSObject {
@@ -475,12 +431,12 @@ struct RCColors {
 
 
 extension String {
-    static func localized(_ phrase: String, _ replaces: String) -> String {
+    public static func localized(_ phrase: String, _ replaces: String) -> String {
         return  NSLocalizedString(phrase.replacingOccurrences(of: "%@", with: replaces), tableName: "fa",
                                   bundle: Bundle.main, value: phrase, comment: "")
         
     }
-    static func localized(_ phrase: String) -> String {
+    public static func localized(_ phrase: String) -> String {
         return  NSLocalizedString(phrase, tableName: "fa",
                                   bundle: Bundle.main, value: phrase, comment: "")
     }
@@ -490,7 +446,7 @@ extension UIView {
     
     
     
-    func setAnchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?,
+    public func setAnchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?,
                    bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?,
                    paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat,
                    paddingRight: CGFloat, width: CGFloat = 0, height: CGFloat = 0) {
@@ -553,7 +509,7 @@ extension UIView {
 }
 
 extension CALayer {
-    func applySketchShadow(
+    public func applySketchShadow(
         color: UIColor = .black,
         alpha: Float = 0.5,
         x: CGFloat = 0,
@@ -578,7 +534,7 @@ extension CALayer {
 extension UILabel {
     
     // Pass value for any one of both parameters and see result
-    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
+    public func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
         
         guard let labelText = self.text else { return }
         
