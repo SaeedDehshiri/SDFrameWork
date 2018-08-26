@@ -113,7 +113,6 @@ public class SDLayout {
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = UIColor.clear
         uiBtn.setImage(UIImage(named: image), for: .normal)
-        uiBtn.layer.borderColor = Color.get(.btnBorderColor).cgColor
         uiBtn.layer.borderWidth = borderWidthSize
         uiBtn.layer.cornerRadius = cornerRadiusSize
         uiBtn.clipsToBounds = true
@@ -125,7 +124,6 @@ public class SDLayout {
         uiBtn.frame = CGRect(x: x, y: y, width: w, height: h)
         uiBtn.backgroundColor = UIColor.clear
         //        uiBtn.setImage(UIImage(named: image), for: .normal)
-        uiBtn.layer.borderColor = Color.get(.btnBorderColor).cgColor
         uiBtn.layer.borderWidth = borderWidthSize
         uiBtn.layer.cornerRadius = cornerRadiusSize
         uiBtn.clipsToBounds = true
@@ -205,11 +203,7 @@ public class SDLayout {
     public class func createTextViewForShow(uiTextView: UITextView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat, cornerRadius: CGFloat, txt: String) -> UITextView{
         uiTextView.frame = CGRect(x: x, y: y, width: w, height: h)
         uiTextView.layer.cornerRadius = cornerRadius
-        //        uiTextView.layer.masksToBounds = true
-        uiTextView.layer.borderColor = Color.get(.borderShowTextView).cgColor
-        uiTextView.textColor = Color.get(.showTextView)
         uiTextView.layer.borderWidth = 0.3
-        //        uiTextView.clipsToBounds = false
         uiTextView.text = txt
         uiTextView.isEditable = false
         uiTextView.backgroundColor = UIColor.clear
@@ -238,8 +232,15 @@ public class SDLayout {
     }
     
     public class func createTabelView(vc: UIViewController, tableView: UITableView, x: CGFloat, y: CGFloat, h: CGFloat, w: CGFloat) -> UITableView{
-        tableView.delegate = vc as! UITableViewDelegate
-        tableView.dataSource = vc as! UITableViewDataSource
+        
+        if vc is UITableViewDelegate{
+            tableView.delegate = vc as! UITableViewDelegate
+        }
+        
+        if vc is UITableViewDataSource{
+            tableView.dataSource = vc as! UITableViewDataSource
+        }
+
         tableView.frame = CGRect(x: x, y: y, width: w, height: h)
         return tableView
     }
