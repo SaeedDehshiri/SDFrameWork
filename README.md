@@ -1,6 +1,6 @@
 ![SDFrameWork in Swift by [Saeed Dehshiri](https://dehshiri.com)](https://api.dehshiri.com/media/images/iResume.png)
 
-SDFrameWork is powerfull framework for easy to design ios apps.
+SDFrameWork is powerfull framework for easy to design ios apps without `Storyboard`.
 
 # Step By Step
 After checked all step, you can easily to use framework.
